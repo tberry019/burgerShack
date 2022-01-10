@@ -1,3 +1,4 @@
+import { burgerService } from "../services/BurgerService"
 import BaseController from '../utils/BaseController'
 
 export class BurgerController extends BaseController {
@@ -7,5 +8,14 @@ export class BurgerController extends BaseController {
       .get('', this.getAll)
   }
 
+  async getAll(req, res, next) {
+    try {
+      res.send('it works')
+      const burgers = burgerService.getAll()
+      res.send('get burgers')
+    } catch (error) {
+      next(error)
+    }
 
+  }
 }
